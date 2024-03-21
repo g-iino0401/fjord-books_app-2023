@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+.left-content {
+    float: left;
+    width: 30%;
+}
+
+.right-content {
+    float: right;
+    width: 70%;
+}
+
+.container {
+    overflow: hidden;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}

@@ -1,0 +1,22 @@
+<h1><%= User.model_name.human %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Eメール</th>
+      <th>アカウント名</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <%= paginate @users %>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to t('views.common.show'), user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

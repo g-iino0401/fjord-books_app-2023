@@ -8,9 +8,56 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
   </head>
 
-  <body class="<%= params[:action] %>">
-    <%= yield %>
+  <div class="container">
+    <div class="left-content">
+      <body class="<%= params[:action] %>">
+        <% if notice.present? %>
+          <p id="notice" style="color: green"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p id="alert"><%= alert %></p>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <div class="menu-container">
+            <div class="title"><%= t('.sign_in_as', email: current_user.email) %></div>
+            <ul>
+              <li>
+                <%= link_to t('devise.registrations.edit.title'), edit_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to t('views.common.sign_out'), destroy_user_session_path, data: { turbo_method: :delete } %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <div class="menu-container">
+            <div class="title"><%= t('.menu') %></div>
+            <ul>
+              <li>
+                <%= link_to '本', books_path %>
+              </li>
+              <li>
+                <%= link_to 'ユーザー', users_path %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      </body>
+    </div>
+    <div class="right-content">
+      <%= yield %>
+    </div>
+  </div>
   </body>
 </html>
