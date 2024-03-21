@@ -1,9 +1,7 @@
 ja:
   activerecord:
     models:
-      book: "本の一覧" 
-      Editing book: "本の編集"
-      New book: "本の作成"
+      book: "本"
     attributes:
       book:
         title: "タイトル"
@@ -14,5 +12,6 @@ ja:
     create: "本を作成しました"
     update: "本を編集しました"
     destroy: "本を削除しました"
-
-
+  list: "%{models}の一覧"
+  edit: "%{models}の編集"
+  new: "%{models}の作成"
