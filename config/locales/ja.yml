@@ -10,5 +10,9 @@ ja:
         memo: "メモ"
         author: "著者"
         picture: "画像"
+  notice:
+    create: "本を作成しました"
+    update: "本を編集しました"
+    destroy: "本を削除しました"
 
 
