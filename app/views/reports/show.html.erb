@@ -1,0 +1,40 @@
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+
+<div class="show-item">
+  <p>
+    <%= t('views.common.created_at') %>:<%= @report.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %>
+  </p>
+  <%= render @report %>
+</div>
+
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>|
+  <% if current_user == @report.user %>
+    <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %>
+    <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
+  <% end %>
+</nav>
+
+<h2><%= t('activerecord.models.comment') %></h2>
+<%= form_with(model: [@report, @comment], url: report_comments_path(@report)) do |form| %>
+  <div class="field">
+    <%= Comment.human_attribute_name(:content) %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<% @report.comments.each do |comment| %>
+  <div>
+    <% if comment.user.present? %>
+      <p><strong><%= comment.user.name %></strong> (<%= comment.user.email %>)
+    <% end %>
+    <% if comment.created_at %>
+      <p><strong><%= t('views.common.created_at') %>:</strong><%= comment.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %></p>
+    <% end %>
+    <p><%= comment.content %></p>
+    <% if comment.user.present? && comment.user == current_user %>
+      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), report_comment_path(@report, comment), method: :delete, data:{turbo_method: :delete } %>
+    <% end %>
+  </div>
+<% end %>
