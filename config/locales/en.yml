@@ -33,8 +33,6 @@ en:
   activerecord:
     models:
       book: "book" 
-      Editing book: "Editing book"
-      New book: "New book"
     attributes:
       book:
         title: "title"
@@ -42,9 +40,9 @@ en:
         author: "author"
         picture: "picture"
   notice:
-    create: "Book was successfully created"
-    update: "Book was successfully updated"
-    destroy: "Book was successfully destroyed"
-  list: "%{models}"
+    create: "%{models} was successfully created"
+    update: "%{models} was successfully updated"
+    destroy: "%{models} was successfully destroyed"
+  list: "%{models} list"
   edit: "Editing %{models}"
   new: "New %{models}"
