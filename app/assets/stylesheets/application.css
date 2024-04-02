@@ -44,3 +44,13 @@ td {
     text-align: left;
     padding: 8px;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.green {
+    color: green;
+}
+

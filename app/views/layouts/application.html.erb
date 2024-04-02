@@ -8,22 +8,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-      }
-    </style>
   </head>
 
   <div class="container">
     <div class="left-content">
       <body class="<%= params[:action] %>">
         <% if notice.present? %>
-          <p id="notice" style="color: green"><%= notice %></p>
+          <p class="green"><%= notice %></p>
         <% end %>
         <% if alert.present? %>
-          <p id="alert"><%= alert %></p>
+          <p><%= alert %></p>
         <% end %>
 
         <% if user_signed_in? %>
@@ -45,10 +39,10 @@
             <div class="title"><%= t('.menu') %></div>
             <ul>
               <li>
-                <%= link_to '本', books_path %>
+                <%= link_to Book.model_name.human, books_path %>
               </li>
               <li>
-                <%= link_to 'ユーザー', users_path %>
+                <%= link_to User.model_name.human, users_path %>
               </li>
             </ul>
           </div>

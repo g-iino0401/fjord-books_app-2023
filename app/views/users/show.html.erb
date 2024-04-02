@@ -1,27 +1,27 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
 <p>
-  <strong>Eメール:</strong>
+  <strong><%= t("activerecord.attributes.user.mail") %>:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>アカウント名:</strong>
+  <strong><%= t("activerecord.attributes.user.accont_name") %>:</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>住所:</strong>
+  <strong><%= t("activerecord.attributes.user.address") %>:</strong>
   <%= @user.address %>
 </p>
 
 <p>
-  <strong>郵便番号:</strong>
+  <strong><%= t("activerecord.attributes.user.zip_code") %>:</strong>
   <%= @user.zip_code %>
 </p>
 
 <p>
-  <strong>自己紹介文:</strong>
+  <strong><%= t("activerecord.attributes.user.self_introduction") %>:</strong>
   <%= @user.self_introduction %>
 </p>
 

@@ -220,6 +220,8 @@ ja:
         address: 住所
         zip_code: 郵便番号
         self_introduction: 自己紹介文
+        mail: Eメール
+        accont_name: アカウント名
   layouts:
     application:
       menu: メニュー
