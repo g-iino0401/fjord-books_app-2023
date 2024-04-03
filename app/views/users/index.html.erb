@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th><%= t("activerecord.attributes.user.mail") %></th>
-      <th><%= t("activerecord.attributes.user.accont_name") %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:accont_name) %></th>
       <th></th>
     </tr>
   </thead>
