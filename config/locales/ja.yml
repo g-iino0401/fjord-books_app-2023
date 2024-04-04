@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      book: "本"
+    attributes:
+      book:
+        title: "タイトル"
+        memo: "メモ"
+        author: "著者"
+        picture: "画像"
+  notice:
+    create: "%{models}を作成しました"
+    update: "%{models}を編集しました"
+    destroy: "%{models}を削除しました"
+  list: "%{models}の一覧"
+  edit: "%{models}の編集"
+  new: "%{models}の作成"
