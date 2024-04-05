@@ -2,6 +2,12 @@
 
 <div class="show-item">
   <%= render @user %>
+  <% if @user.user_icon.attached? %>
+  <p>
+    <strong><%= User.human_attribute_name("user_icon") %>:</strong>
+    <%= image_tag @user.user_icon.variant(resize_to_limit: [100, 100]) %>
+  </p>
+  <% end %>
 </div>
 
 <nav class="page-nav">
