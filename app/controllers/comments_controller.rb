@@ -6,15 +6,19 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    return unless @comment.save
-
-    redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human))
+    
+    if @comment.save
+      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      flash[:alert] = "コメントが登録できません。"
+      render_commentable_page
+    end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human))
+    redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
@@ -29,9 +33,17 @@ class CommentsController < ApplicationController
 
   def find_commentable
     if params[:book_id]
-      Book.find_by(id: params[:book_id])
+      Book.find_by!(id: params[:book_id])
     elsif params[:report_id]
-      Report.find_by(id: params[:report_id])
+      Report.find_by!(id: params[:report_id])
+    end
+  end
+
+  def render_commentable_page
+    if @commentable.is_a?(Book)
+      redirect_to book_path(@commentable)
+    elsif @commentable.is_a?(Report)
+      redirect_to report_path(@commentable)
     end
   end
 end
