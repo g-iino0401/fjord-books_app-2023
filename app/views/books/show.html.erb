@@ -10,3 +10,6 @@
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+<%= render partial: "share/comments_form", locals: {obj: @book, obj2: "book" } %>
+<%= render partial: "share/comments_show", locals: {obj: @book } %>

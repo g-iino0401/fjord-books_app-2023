@@ -1,0 +1,13 @@
+<% obj.comments.each do |comment| %>
+  <div>
+    <% if comment.user.present? %>
+      <p><strong><%= comment.user.name %></strong> (<%= comment.user.email %>)
+    <% end %>
+    <% if comment.created_at %>
+      <p><strong><%= t('views.common.created_at') %>:</strong><%= l(comment.created_at) %></p>
+    <% end %>
+    <p><%= comment.content %></p>
+    <% if comment.user == current_user %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<h2><%= t('activerecord.models.comment') %></h2>
+<%= form_with(model: [obj, @comment], url: send("#{obj2}_comments_path", obj)) do |form| %>
+  <div class="field">
+    <%= Comment.human_attribute_name(:content) %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+

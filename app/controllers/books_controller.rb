@@ -9,7 +9,12 @@ class BooksController < ApplicationController
   end
 
   # GET /books/1 or /books/1.json
-  def show; end
+  def show
+    @commentable = @book
+    @comments = @book.comments
+    @comment = @commentable.comments.new
+    @comment_path_name = "book"
+  end
 
   # GET /books/new
   def new
@@ -68,4 +73,6 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :memo, :author, :picture)
   end
+
+
 end
