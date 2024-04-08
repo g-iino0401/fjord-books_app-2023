@@ -11,26 +11,5 @@
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
 
-<h2><%= t('activerecord.models.comment') %></h2>
-<%= form_with(model: [@book, @comment], url: book_comments_path(@book)) do |form| %>
-  <div class="field">
-    <%= Comment.human_attribute_name(:content) %>
-    <%= form.text_area :content %>
-  </div>
-  <%= form.submit %>
-<% end %>
-
-<% @book.comments.each do |comment| %>
-  <div>
-    <% if comment.user.present? %>
-      <p><strong><%= comment.user.name %></strong> (<%= comment.user.email %>)
-    <% end %>
-    <% if comment.created_at %>
-      <p><strong><%= t('views.common.created_at') %>:</strong><%= comment.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <% end %>
-    <p><%= comment.content %></p>
-    <% if comment.user.present? && comment.user == current_user %>
-      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), book_comment_path(@book, comment), method: :delete, data:{turbo_method: :delete } %>
-    <% end %>
-  </div>
-<% end %>
+<%= render partial: "share/comments_form", locals: {obj: @book, obj2: "book" } %>
+<%= render partial: "share/comments_show", locals: {obj: @book } %>

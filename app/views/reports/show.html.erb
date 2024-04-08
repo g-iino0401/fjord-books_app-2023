@@ -30,10 +30,10 @@
       <p><strong><%= comment.user.name %></strong> (<%= comment.user.email %>)
     <% end %>
     <% if comment.created_at %>
-      <p><strong><%= t('views.common.created_at') %>:</strong><%= comment.created_at.in_time_zone.strftime("%Y-%m-%d %H:%M:%S") %></p>
+      <p><strong><%= t('views.common.created_at') %>:</strong><%= l(comment.created_at) %></p>
     <% end %>
     <p><%= comment.content %></p>
-    <% if comment.user.present? && comment.user == current_user %>
+    <% if comment.user == current_user %>
       <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), report_comment_path(@report, comment), method: :delete, data:{turbo_method: :delete } %>
     <% end %>
   </div>

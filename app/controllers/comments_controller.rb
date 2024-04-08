@@ -26,24 +26,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:content)
   end
-
-  def set_commentable
-    @commentable = find_commentable
-  end
-
-  def find_commentable
-    if params[:book_id]
-      Book.find_by!(id: params[:book_id])
-    elsif params[:report_id]
-      Report.find_by!(id: params[:report_id])
-    end
-  end
-
-  def render_commentable_page
-    if @commentable.is_a?(Book)
-      redirect_to book_path(@commentable)
-    elsif @commentable.is_a?(Report)
-      redirect_to report_path(@commentable)
-    end
-  end
 end

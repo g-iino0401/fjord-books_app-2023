@@ -13,6 +13,7 @@ class BooksController < ApplicationController
     @commentable = @book
     @comments = @book.comments
     @comment = @commentable.comments.new
+    @comment_path_name = "book"
   end
 
   # GET /books/new
@@ -72,4 +73,6 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :memo, :author, :picture)
   end
+
+
 end
